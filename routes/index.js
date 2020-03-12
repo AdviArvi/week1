@@ -22,7 +22,8 @@ const {catchErrors}=require('../handlers/errorHandlers');
 //   res.send(reverse);
 // })
 
-router.get('/',storeController.homePage);
+router.get('/',catchErrors(storeController.getStores));
+router.get('/stores',catchErrors(storeController.getStores));
 
 router.get('/add',storeController.addStore);
 router.post('/add',catchErrors(storeController.createStore));
